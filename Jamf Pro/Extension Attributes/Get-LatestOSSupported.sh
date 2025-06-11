@@ -77,6 +77,7 @@ not_monterey_regex="^(MacPro[1-5],[0-9]|iMac([1-9]|1[0-5]),[0-9]|(Macmini|MacBoo
 not_ventura_regex="^(MacPro[1-6],[0-9]|iMac([1-9]|1[0-7]),[0-9]|(Macmini|MacBookAir)[1-7],[0-9]|MacBook[1-9],[0-9]|MacBookPro([1-9]|1[0-3]),[0-9])$"
 not_sonoma_regex="^(MacPro[1-6],[0-9]|iMac([1-9]|1[0-8]),[0-9]|(Macmini|MacBookAir)[1-7],[0-9]|MacBook[0-9,]+|MacBookPro([1-9]|1[0-4]),[0-9])$"
 not_sequoia_regex="^(MacPro[1-6],[0-9]|iMac([1-9]|1[0-8]),[0-9]|Macmini[1-7],[0-9]|MacBookAir[1-8],[0-9]|MacBookPro([1-9]|1[0-4]),[0-9])$"
+not_tahoe_regex="^(MacPro[1-6],[0-9]|iMac([1-9]|1[0-9]),[0-9]|Macmini[1-8],[0-9]|MacBookAir[1-9],[0-9]|MacBookPro([1-9]|1[0-5]),[0-9])$"
 
 ##################################################
 # Setup Functions
@@ -121,8 +122,10 @@ model_check() {
 		echo "Ventura*"
 	elif [[ $model =~ $not_sequoia_regex ]]; then
 		echo "Sonoma*"
-	else
+	elif [[ $model =~ $not_tahoe_regex ]]; then
 		echo "Sequoia*"
+	else
+		echo "Tahoe*"
 	fi
 }
 
@@ -351,6 +354,13 @@ storage_check() {
 	# Set the required free space to compare.
 	# Set space requirement in bytes:  /usr/bin/bc <<< "<space in GB> * 1073741824"
 	case "${validate_os}" in
+ 		"Tahoe*"* )
+			# Value's inherited from Monterey, Apple has not defined these requirements
+			required_free_space_newer="27917287424" # 26GB if Sierra or later
+			os_newer="10.12.0"
+			required_free_space_older="47244640256" # 44GB if El Capitan or earlier
+			os_older="10.11.0"
+		;;
 		"Sequoia*"* )
 			# Value's inherited from Monterey, Apple has not defined these requirements
 			required_free_space_newer="27917287424" # 26GB if Sierra or later
@@ -462,6 +472,9 @@ fi
 model_result=$( model_check "${mac_model}" )
 
 case "${model_result}" in
+	"Tahoe*" )
+		version_string="26"
+	;;
 	"Sequoia*" )
 		version_string="15"
 	;;
