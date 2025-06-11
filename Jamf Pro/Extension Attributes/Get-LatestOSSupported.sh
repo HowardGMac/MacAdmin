@@ -144,6 +144,11 @@ os_check() {
 		# For all models except MacPro5,1...
 
 		if [[
+			"${validate_os}" == "Tahoe*" && \
+			( "${os_major}" -ge 11 || "${os_major}" -eq 10 && "${os_minor}" -ge 9 )
+		]]; then
+			echo "Tahoe*"
+   		elif [[
 			"${validate_os}" == "Sequoia*" && \
 			( "${os_major}" -ge 11 || "${os_major}" -eq 10 && "${os_minor}" -ge 9 )
 		]]; then
@@ -264,7 +269,7 @@ ram_check() {
 	system_ram=$(( $( /usr/sbin/sysctl -n hw.memsize ) / bytes_in_gigabytes ))
 
 	if [[
-		"${validate_os}" =~ ^(Catalina|Big[[:space:]]Sur|Monterey|(Ventura|Sonoma|Sequoia)\*)$
+		"${validate_os}" =~ ^(Catalina|Big[[:space:]]Sur|Monterey|(Ventura|Sonoma|Sequoia|Tahoe)\*)$
 	]]; then
 		# OS version requires 4GB RAM minimum.  For Ventura and newer, value's are inherited from
 		# Monterey as Apple has not publicly defined these requirements.
