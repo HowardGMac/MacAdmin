@@ -22,7 +22,8 @@
 #			updated.
 #
 #	System Requirements can be found here:
-#		Sequoia (Preview) - https://www.apple.com/macos/macos-sequoia-preview/
+#		Tahoe - https://www.apple.com/os/macos/
+#		Sequoia - https://support.apple.com/en-us/120282
 #		Sonoma - https://support.apple.com/en-us/105113
 #		Ventura - https://support.apple.com/en-us/102861
 #			* Apple has never publicly posted storage requirements for Ventura, which is why this
@@ -77,7 +78,7 @@ not_monterey_regex="^(MacPro[1-5],[0-9]|iMac([1-9]|1[0-5]),[0-9]|(Macmini|MacBoo
 not_ventura_regex="^(MacPro[1-6],[0-9]|iMac([1-9]|1[0-7]),[0-9]|(Macmini|MacBookAir)[1-7],[0-9]|MacBook[1-9],[0-9]|MacBookPro([1-9]|1[0-3]),[0-9])$"
 not_sonoma_regex="^(MacPro[1-6],[0-9]|iMac([1-9]|1[0-8]),[0-9]|(Macmini|MacBookAir)[1-7],[0-9]|MacBook[0-9,]+|MacBookPro([1-9]|1[0-4]),[0-9])$"
 not_sequoia_regex="^(MacPro[1-6],[0-9]|iMac([1-9]|1[0-8]),[0-9]|Macmini[1-7],[0-9]|MacBookAir[1-8],[0-9]|MacBookPro([1-9]|1[0-4]),[0-9])$"
-not_tahoe_regex="^(MacPro[1-6],[0-9]|iMac([1-9]|1[0-9]),[0-9]|Macmini[1-8],[0-9]|MacBookAir[1-9],[0-9]|MacBookPro([1-9]|1[0-5]),[0-9])$"
+not_tahoe_regex="^(MacPro[1-6],[0-9]|iMac([1-9]|1[0-9]),[0-9]|iMacPro1,1|Macmini[1-8],[0-9]|MacBookAir[1-9],[0-9]|MacBookPro((16,3)|([1-9]|1[0-5]),[0-9]))$"
 
 ##################################################
 # Setup Functions
