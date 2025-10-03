@@ -4,7 +4,7 @@
 ####################################################################################################
 # Script Name:  Get-LatestOSSupported.sh
 # By:  Zack Thompson / Created:  9/26/2017
-# Version:  2.6.1 / Updated:  6/11/2024 / By:  ZT
+# Version:  2.7.0 / Updated:  6/11/2025 / By:  @HowardGMac
 #
 # Description:  A Jamf Pro Extension Attribute to check the latest compatible version of macOS.
 #
@@ -22,7 +22,7 @@
 #			updated.
 #
 #	System Requirements can be found here:
-#		Tahoe - https://www.apple.com/os/macos/
+#		Tahoe - https://support.apple.com/en-us/122867
 #		Sequoia - https://support.apple.com/en-us/120282
 #		Sonoma - https://support.apple.com/en-us/105113
 #		Ventura - https://support.apple.com/en-us/102861
